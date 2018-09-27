@@ -28,8 +28,7 @@
 		<local:Grid Grid.Column="0"
 				Grid.Row="0" />
 		<local:DrawingGrid Grid.Column="1"
-				Grid.Row="0"
-				TilePadding="{Binding TilePadding}"/>
+				Grid.Row="0"/>
 		<Border Grid.Column="0"
 				Grid.Row="1"
 				HorizontalAlignment="Center"
@@ -48,6 +47,14 @@
 				BorderBrush="Black">
 			<!--
 				Comment out this element to run without a hang ...
+				Points to note:
+				In fact: as noted in DrawingGrid.cs: defining and using a DependencyProperty
+				in code causes the bug. If you comment out that property it will run ...
+				This is a UIElement (and not FrameworkElement); YET so is the "Grid" element.
+				There are two instances of each here ... all within the same outer Wpf Grid.
+				But this one is inside a Border ...
+				Yet still another "Grid" Element is inside a Border and that one has no issue.
+				If you also move this outside of this Border it will run.
 			-->
 			<local:DrawingGrid />
 		</Border>

@@ -9,6 +9,10 @@ namespace WpfApp1
 	public class DrawingGrid
 			: UIElement
 	{
+		// BUG:
+		// Comment-out this DependencyProperty; and uncomment the CLR property below,
+		// and the App will run ...
+
 		/// <summary>
 		/// Dependency property to define the Tile Padding.
 		/// </summary>
@@ -30,6 +34,11 @@ namespace WpfApp1
 			set => SetValue(DrawingGrid.TilePaddingProperty, value);
 		}
 
+		///// <summary>
+		///// Property to define the Tile Padding.
+		///// </summary>
+		//public int TilePadding { get; set; } = 6;
+
 
 		private readonly List<DrawingTile> tiles = new List<DrawingTile>(4);
 
@@ -41,12 +50,6 @@ namespace WpfApp1
 			tiles.Add(new DrawingTile(this, "Tile A1", 0, 1));
 			tiles.Add(new DrawingTile(this, "Tile B1", 1, 1));
 		}
-
-
-		///// <summary>
-		///// Property to define the Tile Padding.
-		///// </summary>
-		//public int TilePadding { get; set; } = 6;
 
 
 		protected override Size MeasureCore(Size availableSize)
